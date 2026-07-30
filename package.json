@@ -1,0 +1,43 @@
+{
+  "name": "@cartonpilot/sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript SDK for the CartonPilot 3D bin-packing / cartonization API",
+  "keywords": [
+    "cartonpilot",
+    "bin-packing",
+    "cartonization",
+    "shipping",
+    "3d-packing"
+  ],
+  "license": "MIT",
+  "homepage": "https://cartonpilot.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cartonpilot/cartonpilot-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cartonpilot/cartonpilot-node/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
