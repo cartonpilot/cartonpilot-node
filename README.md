@@ -1,4 +1,4 @@
-# @cartonpilot/sdk
+# cartonpilot
 
 Official TypeScript SDK for the [CartonPilot](https://cartonpilot.com) 3D bin-packing / cartonization REST API.
 
@@ -8,18 +8,16 @@ Official TypeScript SDK for the [CartonPilot](https://cartonpilot.com) 3D bin-pa
 
 ## Install
 
-Not yet published to npm. Install from this directory:
-
 ```bash
-npm install /path/to/saas-api/sdks/typescript
+npm install cartonpilot
 ```
 
-(Or with a relative path, e.g. `npm install ../saas-api/sdks/typescript`.) Run `npm run build` in this directory first so `dist/` exists.
+You will need an API key. The [free plan](https://cartonpilot.com/pricing) needs no credit card.
 
 ## Quickstart (single order)
 
 ```ts
-import { CartonPilot } from "@cartonpilot/sdk";
+import { CartonPilot } from "cartonpilot";
 
 const cartonpilot = new CartonPilot({ apiKey: process.env.CARTONPILOT_API_KEY! });
 
@@ -137,7 +135,7 @@ On completion or failure, CartonPilot POSTs JSON to your URL with headers `X-Car
 
 ```ts
 import express from "express";
-import { verifyWebhookSignature, WebhookPayload } from "@cartonpilot/sdk";
+import { verifyWebhookSignature, WebhookPayload } from "cartonpilot";
 
 const app = express();
 
@@ -202,7 +200,7 @@ Related: `objective: "lowest-billable-weight"` minimizes carrier billable weight
 Every non-2xx response throws `CartonPilotError`, carrying the API's error envelope (`{ error: <machine code>, message, requestId?, issues?, ...details }`):
 
 ```ts
-import { CartonPilot, CartonPilotError } from "@cartonpilot/sdk";
+import { CartonPilot, CartonPilotError } from "cartonpilot";
 
 try {
   await cartonpilot.optimize({ boxes, items });
@@ -237,7 +235,7 @@ try {
 `optimize` is overloaded, so with a statically-known request shape the return type is precise. If you build requests dynamically, narrow with the exported type guards:
 
 ```ts
-import { isBatchJobAccepted, isBatchResponse, isOptimizationResponse } from "@cartonpilot/sdk";
+import { isBatchJobAccepted, isBatchResponse, isOptimizationResponse } from "cartonpilot";
 
 const response = await cartonpilot.optimize(dynamicRequest);
 if (isBatchJobAccepted(response)) {

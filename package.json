@@ -1,5 +1,5 @@
 {
-  "name": "@cartonpilot/sdk",
+  "name": "cartonpilot",
   "version": "0.1.0",
   "description": "Official TypeScript SDK for the CartonPilot 3D bin-packing / cartonization API",
   "keywords": [
@@ -17,9 +17,6 @@
   },
   "bugs": {
     "url": "https://github.com/cartonpilot/cartonpilot-node/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

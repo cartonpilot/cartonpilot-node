@@ -9,7 +9,10 @@ import { createHmac, timingSafeEqual } from "node:crypto";
  * parsed JSON. Uses a timing-safe comparison.
  */
 export function verifyWebhookSignature(
-  rawBody: string | Buffer,
+  // Deliberately not `Buffer`: that would leak a @types/node global into the
+  // published .d.ts and break consumers who don't depend on it. Buffer is a
+  // Uint8Array, so callers passing one still typecheck.
+  rawBody: string | Uint8Array,
   signatureHeader: string,
   secret: string,
 ): boolean {
